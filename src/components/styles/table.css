@@ -1,0 +1,45 @@
+/* TABLE FORMAT */
+div#results {
+  max-width: 90vw;
+  overflow-x: auto;
+}
+
+table.results-table {
+  text-align: center;
+  border-spacing: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 20px #0002;
+}
+
+/* HEADERS */
+#results thead {
+  width: 100%;
+  background-color: var(--chakra-colors-blackAlpha-900);
+}
+
+#results th {
+  color: white;
+  font-weight: normal;
+  text-transform: uppercase;
+  padding: 5px 18px;
+}
+
+/* COMMON & BORDERS */
+#results td {
+  padding: 5px 8px;
+}
+
+/* DATA STYLE DETAILS */
+#results td.active {
+  color: var(--chakra-colors-orange-500);
+}
+
+/* ROWS */
+#results tr:nth-child(even) {
+  background-color: var(--chakra-colors-blackAlpha-200);
+}
+
+#results tbody > tr:hover {
+  background-color: var(--chakra-colors-orange-500);
+  color: white;
+}
