@@ -11,6 +11,10 @@ table.results-table {
   box-shadow: 0 0 20px #0002;
 }
 
+#results h2 {
+  font-size: large;
+}
+
 /* HEADERS */
 #results thead {
   width: 100%;
@@ -26,12 +30,20 @@ table.results-table {
 
 /* COMMON & BORDERS */
 #results td {
-  padding: 5px 8px;
+  padding: 3px 8px;
 }
 
 /* DATA STYLE DETAILS */
 #results td.active {
   color: var(--chakra-colors-orange-500);
+}
+
+#results td:nth-child(2) {
+  min-width: 150px; /* Commerce Name */
+}
+
+#results td:nth-child(3) {
+  min-width: 110px; /* CUIT Numbers */
 }
 
 /* ROWS */
