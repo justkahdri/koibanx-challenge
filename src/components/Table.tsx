@@ -1,9 +1,15 @@
+import { Spinner } from "@chakra-ui/react";
 import React from "react";
 import slugify from "slugify";
+import { Response } from "../Types";
 
 import "./styles/table.css";
 
-const Table: React.FC = () => {
+interface TableProps extends Partial<Response> {
+  loading: boolean;
+}
+
+const Table: React.FC<TableProps> = (props) => {
   const headers = [
     "ID",
     "Comercio",
@@ -18,6 +24,21 @@ const Table: React.FC = () => {
     "Activo",
     "Ultima Venta",
   ];
+
+  if (props.loading) {
+    return (
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="blackAlpha.200"
+        color="orange.500"
+        size="xl"
+      />
+    );
+  } else if (!props.data) {
+    return <h2>🔎 Los resultados aparecer&aacute;n aqu&iacute;.</h2>;
+  }
+
   return (
     <div id="results">
       <table className="results-table">
@@ -30,29 +51,25 @@ const Table: React.FC = () => {
         </thead>
 
         <tbody>
-          <tr>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-            <td>Jill</td>
-            <td>Smith</td>
-            <td>50</td>
-          </tr>
-          <tr>
-            <td>Eve</td>
-            <td>Jackson</td>
-            <td>94</td>
-          </tr>
+          {props.data.map((entry) => (
+            <tr key={entry.id}>
+              <td>{entry.id.slice(0, 10)}</td>
+              <td>{entry.commerce}</td>
+              <td>{entry.cuit}</td>
+              {entry.concepts.map((concept, idx) => (
+                <td key={idx}>{concept}</td>
+              ))}
+              <td>{entry.current_balance.toLocaleString()}</td>
+              <td>{entry.active ? "Activo" : "No activo"}</td>
+              <td>{entry.last_sale}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
+
+// TODO Display pages and navigation
 
 export default Table;
