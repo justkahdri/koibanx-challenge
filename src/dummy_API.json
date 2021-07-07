@@ -1,0 +1,173 @@
+[
+  {
+    "id": "60e2414df6a0af6a14000b19",
+    "commerce": "Kandi Technologies Group, Inc.",
+    "cuit": "723-37-3757",
+    "concepts": [58, 8, 75, 17, 60, 14],
+    "current_balance": 2769.93,
+    "active": false,
+    "last_sale": "25/02/2021"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b1a",
+    "commerce": "Origo Acquisition Corporation",
+    "cuit": "370-24-7084",
+    "concepts": [98, 17, 36, 23, 10, 70],
+    "current_balance": 4600.51,
+    "active": false,
+    "last_sale": "03/08/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b1b",
+    "commerce": "Zion Oil & Gas Inc",
+    "cuit": "632-05-7464",
+    "concepts": [39, 92, 39, 57, 13, 30],
+    "current_balance": 2364.14,
+    "active": true,
+    "last_sale": "09/09/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b1c",
+    "commerce": "Education Realty Trust Inc.",
+    "cuit": "874-95-0974",
+    "concepts": [97, 19, 72, 92, 57, 4],
+    "current_balance": 6223.58,
+    "active": false,
+    "last_sale": "14/07/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b1d",
+    "commerce": "Eagle Materials Inc",
+    "cuit": "634-67-3532",
+    "concepts": [28, 45, 83, 88, 32, 96],
+    "current_balance": 2756.73,
+    "active": false,
+    "last_sale": "10/06/2021"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b1e",
+    "commerce": "Bioverativ Inc.",
+    "cuit": "479-93-4210",
+    "concepts": [48, 88, 82, 97, 41, 92],
+    "current_balance": 2331.43,
+    "active": true,
+    "last_sale": "20/07/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b1f",
+    "commerce": "Riverview Bancorp Inc",
+    "cuit": "159-09-5138",
+    "concepts": [85, 100, 49, 74, 95, 34],
+    "current_balance": 3583.71,
+    "active": true,
+    "last_sale": "20/11/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b20",
+    "commerce": "Dover Downs Gaming & Entertainment Inc",
+    "cuit": "527-32-8483",
+    "concepts": [99, 37, 76, 51, 30, 15],
+    "current_balance": 3250.77,
+    "active": false,
+    "last_sale": "24/05/2021"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b21",
+    "commerce": "EQT Midstream Partners, LP",
+    "cuit": "476-63-1439",
+    "concepts": [30, 11, 28, 22, 53, 98],
+    "current_balance": 8047.46,
+    "active": true,
+    "last_sale": "02/12/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b22",
+    "commerce": "KLX Inc.",
+    "cuit": "478-47-0436",
+    "concepts": [30, 85, 87, 47, 97, 3],
+    "current_balance": 8463.78,
+    "active": true,
+    "last_sale": "28/06/2021"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b23",
+    "commerce": "Triangle Capital Corporation",
+    "cuit": "280-87-8415",
+    "concepts": [95, 68, 16, 30, 94, 23],
+    "current_balance": 1506.92,
+    "active": true,
+    "last_sale": "19/07/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b24",
+    "commerce": "Aceto Corporation",
+    "cuit": "503-89-9781",
+    "concepts": [19, 90, 38, 17, 4, 35],
+    "current_balance": 6102.54,
+    "active": false,
+    "last_sale": "15/11/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b25",
+    "commerce": "CalAtlantic Group, Inc.",
+    "cuit": "791-01-0903",
+    "concepts": [36, 58, 39, 2, 63, 41],
+    "current_balance": 616.82,
+    "active": false,
+    "last_sale": "10/06/2021"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b26",
+    "commerce": "PowerShares Multi-Strategy Alternative Portfolio",
+    "cuit": "535-10-0915",
+    "concepts": [74, 20, 3, 66, 66, 24],
+    "current_balance": 5802.17,
+    "active": true,
+    "last_sale": "01/12/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b27",
+    "commerce": "Tetra Tech, Inc.",
+    "cuit": "268-83-2582",
+    "concepts": [54, 70, 43, 2, 69, 89],
+    "current_balance": 2691.53,
+    "active": true,
+    "last_sale": "22/01/2021"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b28",
+    "commerce": "Southside Bancshares, Inc.",
+    "cuit": "830-25-3654",
+    "concepts": [97, 88, 42, 7, 51, 24],
+    "current_balance": 3519.52,
+    "active": false,
+    "last_sale": "27/09/2020"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b29",
+    "commerce": "Erie Indemnity Company",
+    "cuit": "330-78-2187",
+    "concepts": [19, 80, 94, 97, 73, 47],
+    "current_balance": 4526.81,
+    "active": true,
+    "last_sale": "09/04/2021"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b2a",
+    "commerce": "Cerecor Inc.",
+    "cuit": "848-05-9451",
+    "concepts": [77, 74, 19, 45, 63, 34],
+    "current_balance": 9492.03,
+    "active": true,
+    "last_sale": "18/05/2021"
+  },
+  {
+    "id": "60e2414df6a0af6a14000b2b",
+    "commerce": "Minerals Technologies Inc.",
+    "cuit": "389-44-5279",
+    "concepts": [24, 21, 85, 58, 75, 8],
+    "current_balance": 55.89,
+    "active": false,
+    "last_sale": "02/12/2020"
+  }
+]
