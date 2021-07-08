@@ -112,7 +112,7 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
           <FormErrorMessage>{invalid}</FormErrorMessage>
         ) : (
           <FormHelperText>
-            Intent&aacute; buscando Xunlei Limited
+            Intent&aacute; buscando &quot;Pancher&iacute;a el Uno&quot;
           </FormHelperText>
         )}
       </FormControl>

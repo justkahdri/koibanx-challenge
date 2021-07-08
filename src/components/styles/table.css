@@ -1,6 +1,12 @@
 /* TABLE FORMAT */
-div#results {
+div.table-container {
   max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+}
+
+div#results {
+  max-width: 100%;
   overflow-x: auto;
 }
 
@@ -11,7 +17,21 @@ table.results-table {
   box-shadow: 0 0 20px #0002;
 }
 
-#results h2 {
+/* TITLE & TABLE SCROLLBAR */
+
+div#results::-webkit-scrollbar {
+  height: 16px; /* width of the entire scrollbar */
+}
+
+div#results::-webkit-scrollbar-thumb {
+  background-color: var(
+    --chakra-colors-orange-500
+  ); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 5px solid #fff; /* creates padding around scroll thumb */
+}
+
+h2.placeholder {
   font-size: large;
 }
 
@@ -24,6 +44,7 @@ table.results-table {
 #results th {
   color: white;
   font-weight: normal;
+  font-size: max(1vw, 12px);
   text-transform: uppercase;
   padding: 5px 18px;
 }
@@ -54,4 +75,32 @@ table.results-table {
 #results tbody > tr:hover {
   background-color: var(--chakra-colors-orange-500);
   color: white;
+}
+
+/* NAVIGATION */
+.navigation {
+  min-width: 40vw;
+  justify-content: space-between;
+  margin-top: 1rem;
+  display: flex;
+  align-self: flex-end;
+  margin: 4px;
+}
+
+.navigation-info {
+  color: var(--chakra-colors-blackAlpha-700);
+  margin: 0 10px;
+}
+.navigation-link,
+.navigation-text {
+  margin: 0 8px;
+}
+
+.navigation-link {
+  color: var(--chakra-colors-orange-500);
+}
+
+.navigation-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
