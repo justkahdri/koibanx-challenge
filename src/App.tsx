@@ -26,7 +26,6 @@ const App: React.FC = () => {
     }
     setTableData(response);
     setLoading(false);
-    console.log(tableData);
   };
 
   return (

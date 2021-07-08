@@ -10,6 +10,7 @@ import {
   Icon,
   Button,
   Text,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 
 import { GoSearch } from "react-icons/go";
@@ -21,6 +22,7 @@ type SearcherProps = {
 
 const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
   const { handleSearch, loading } = props;
+  const [invalid, setInvalid] = useState<string | false>(false);
   const searchInput = useRef() as MutableRefObject<HTMLInputElement>;
   const listedFilters = {
     id: "ID",
@@ -43,9 +45,42 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
     }
   };
 
+  // Validation for Search input & filters selected
+  const validateSearch = (input: string) => {
+    if (input.length < 2) {
+      setInvalid(
+        "Por favor ingrese 2 o más caracteres para iniciar la búsqueda." // Invalid error message
+      );
+      return false; // Returns false if too short
+    } else if (
+      !activeFilters.length ||
+      (activeFilters[0] === "active" && activeFilters.length === 1)
+    ) {
+      setInvalid(
+        "Por favor seleccione alguno de las opciones de búsqueda." // Invalid error message
+      );
+      return false; // Returns false if there aren't filters selected
+    } else {
+      setInvalid(false); // If valid there is no message
+      return true; // Returns valid
+    }
+  };
+
+  // Wrapper function validates before handling search
+  const wrapperSearch = () => {
+    if (validateSearch(searchInput.current.value)) {
+      handleSearch(searchInput.current.value, activeFilters);
+    }
+  };
+
   return (
     <Stack width="60vw">
-      <FormControl id="search" isDisabled={loading}>
+      <FormControl
+        id="search"
+        isDisabled={loading}
+        isInvalid={!!invalid}
+        onChange={() => validateSearch(searchInput.current.value)}
+      >
         <Stack direction="row">
           <InputGroup size="lg">
             <Input
@@ -53,11 +88,7 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
               pr="4.5rem"
               type="text"
               placeholder="Nombre de comercio, ID o CUIT"
-              onKeyPress={
-                (e) =>
-                  e.key === "Enter" &&
-                  handleSearch(e.currentTarget.value, activeFilters) // TODO Validation for search
-              } // On "enter" submit search
+              onKeyPress={(e) => e.key === "Enter" && wrapperSearch()} // On "enter" submit search
             />
             <InputRightElement width="4.5rem">
               {loading ? (
@@ -70,27 +101,31 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
                   aria-label="search"
                   boxSize={5}
                   cursor="pointer"
-                  onClick={() =>
-                    handleSearch(searchInput.current.value, activeFilters)
-                  } // Search Button
+                  onClick={() => wrapperSearch()} // Search Button
                 />
               )}
             </InputRightElement>
           </InputGroup>
         </Stack>
 
-        <FormHelperText>Intent&aacute; buscando Xunlei Limited</FormHelperText>
+        {invalid ? (
+          <FormErrorMessage>{invalid}</FormErrorMessage>
+        ) : (
+          <FormHelperText>
+            Intent&aacute; buscando Xunlei Limited
+          </FormHelperText>
+        )}
       </FormControl>
       <Stack direction="row" spacing={6}>
         <Text fontWeight={500}>Filtros:</Text>
-        {Object.entries(listedFilters).map(([key, val]) => (
+        {Object.entries(listedFilters).map(([key, value]) => (
           <Checkbox
             key={key}
             value={key}
             defaultIsChecked
             onChange={toggleFilter}
           >
-            {val}
+            {value}
           </Checkbox>
         ))}
       </Stack>
