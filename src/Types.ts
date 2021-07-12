@@ -6,12 +6,6 @@ export type DataRow = {
   active: boolean;
   last_sale: Date;
   concepts: number[];
-  // concept_1: number;
-  // concept_2: number;
-  // concept_3: number;
-  // concept_4: number;
-  // concept_5: number;
-  // concept_6: number;
 };
 
 export type Response = {
