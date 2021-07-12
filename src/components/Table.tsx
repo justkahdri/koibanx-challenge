@@ -52,16 +52,28 @@ const Table: React.FC<TableProps> = (props) => {
         <table className="results-table">
           <thead>
             <tr>
-              {headers.map((header) => (
-                <th key={slugify(header)}>{header}</th>
-              ))}
+              {headers.map((header) =>
+                ["Comercio", "CUIT"].includes(header) ? (
+                  <th
+                    key={slugify(header)}
+                    className="sortable"
+                    onClick={(e) => {
+                      e.currentTarget.className = "sortable active";
+                    }} // TODO add functionality to sortable headers
+                  >
+                    {header}
+                  </th>
+                ) : (
+                  <th key={slugify(header)}>{header}</th>
+                )
+              )}
             </tr>
           </thead>
 
           <tbody>
             {props.data.map((entry) => (
               <tr key={entry.id}>
-                <td>{entry.id.slice(0, 10)}</td>
+                <td>{entry.id.slice(15)}</td>
                 <td>{entry.commerce}</td>
                 <td>{entry.cuit}</td>
                 {entry.concepts.map((concept, idx) => (
@@ -108,7 +120,6 @@ const Table: React.FC<TableProps> = (props) => {
   );
 };
 
-// TODO Display pages and navigation
 // TODO Manage sortable table
 
 export default Table;

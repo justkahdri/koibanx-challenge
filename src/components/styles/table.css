@@ -49,6 +49,19 @@ h2.placeholder {
   padding: 5px 18px;
 }
 
+/* SORTABLE HEADERS */
+th.sortable::after {
+  content: "🔽";
+}
+
+th.sortable.active::after {
+  content: "🔼";
+}
+
+th.sortable:hover {
+  cursor: pointer;
+}
+
 /* COMMON & BORDERS */
 #results td {
   padding: 3px 8px;
