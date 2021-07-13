@@ -4,9 +4,13 @@
 
 ## EJECUCI&Oacute;N
 
-Instalar dependencias con `npm start` y correr el desarrollo con `npm start`.
+Se instalan las dependencias con `npm i` y se corre el modo desarrollo con `npm start`.
 
 ## ACLARACIONES
+
+- ### Impresi&oacute;n por consola
+
+  Al realizar la b&uacute;squeda en modo desarrollo, ya sea con el &iacute;cono de la lupa o presionando la tecla ENTER, se imprimira en consola la URL que se utilizar&iacute;a en producci&oacute;n.
 
 - ### Uso de Dummy
 
@@ -26,4 +30,5 @@ Instalar dependencias con `npm start` y correr el desarrollo con `npm start`.
 
 ## TECNOLOG&Iacute;AS
 
-Utilic&eacute; &uacute;nicamente React con TypeScript y [ChakraUI](https://chakra-ui.com/) para los estilos.
+App creada a partir del template con TypeSript de [Vite](https://vitejs.dev/).
+Utilic&eacute; &uacute;nicamente React con TypeScript y [ChakraUI](https://chakra-ui.com/) para los estilos, exceptuando la tabla que est&aacute; realizada con CSS "vanilla".
