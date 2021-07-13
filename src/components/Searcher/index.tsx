@@ -2,18 +2,17 @@ import React, { FC, MutableRefObject, useRef, useState } from "react";
 import {
   Input,
   Stack,
-  Checkbox,
   FormControl,
   InputGroup,
   InputRightElement,
   FormHelperText,
   Icon,
   Button,
-  Text,
   FormErrorMessage,
 } from "@chakra-ui/react";
 
 import { GoSearch } from "react-icons/go";
+import SearchFilters from "./SearchFilters";
 
 type SearcherProps = {
   handleSearch: (query: string, filters: string[]) => void;
@@ -116,19 +115,8 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
           </FormHelperText>
         )}
       </FormControl>
-      <Stack direction={["column", "row"]} spacing={6}>
-        <Text fontWeight={500}>Filtros:</Text>
-        {Object.entries(listedFilters).map(([key, value]) => (
-          <Checkbox
-            key={key}
-            value={key}
-            defaultIsChecked
-            onChange={toggleFilter}
-          >
-            {value}
-          </Checkbox>
-        ))}
-      </Stack>
+
+      <SearchFilters filters={listedFilters} toggleFilter={toggleFilter} />
     </Stack>
   );
 };
