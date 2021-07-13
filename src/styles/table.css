@@ -85,7 +85,8 @@ th.sortable:hover {
   background-color: var(--chakra-colors-blackAlpha-200);
 }
 
-#results tbody > tr:hover {
+#results tbody > tr:hover,
+#results tbody > tr:focus {
   background-color: var(--chakra-colors-orange-500);
   color: white;
 }

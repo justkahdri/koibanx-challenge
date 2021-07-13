@@ -29,7 +29,7 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
     cuit: "CUIT",
     commerce: "Nombre de Comercio",
     active: "Solo Activos",
-  };
+  }; // TODO Add active/no-active
   const [activeFilters, setActiveFilters] = useState(
     Object.keys(listedFilters)
   );
@@ -116,7 +116,7 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
           </FormHelperText>
         )}
       </FormControl>
-      <Stack direction="row" spacing={6}>
+      <Stack direction={["column", "row"]} spacing={6}>
         <Text fontWeight={500}>Filtros:</Text>
         {Object.entries(listedFilters).map(([key, value]) => (
           <Checkbox
