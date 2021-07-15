@@ -1,10 +1,11 @@
 import React, { MouseEventHandler } from "react";
 import { Spinner } from "@chakra-ui/react";
 
-import "../../styles/table.css";
 import Navigation from "./Navigation";
 import TBody from "./TBody";
 import THeaders from "./THeaders";
+
+import "../../styles/table.css";
 
 interface TableProps extends TableData {
   loading: boolean;
@@ -30,6 +31,8 @@ const Table: React.FC<TableProps> = (props) => {
       </div>
 
       {props.loading ? (
+        // This is the only external component in the Table:
+        // A spinner that shows the user the table is loading
         <Spinner
           alignSelf="center"
           thickness="4px"
