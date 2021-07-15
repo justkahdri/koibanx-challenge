@@ -15,7 +15,7 @@ import { GoSearch } from "react-icons/go";
 import SearchFilters from "./SearchFilters";
 
 type SearcherProps = {
-  handleSearch: (query: string, filters: string[]) => void;
+  handleSearch: (query: string, filters: TFilters) => void;
   loading: boolean;
 };
 
@@ -23,25 +23,24 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
   const { handleSearch, loading } = props;
   const [invalid, setInvalid] = useState<string | false>(false);
   const searchInput = useRef() as MutableRefObject<HTMLInputElement>;
-  const listedFilters = {
-    id: "ID",
-    cuit: "CUIT",
-    commerce: "Nombre de Comercio",
-    active: "Solo Activos",
-  }; // TODO Add active/no-active
-  const [activeFilters, setActiveFilters] = useState(
-    Object.keys(listedFilters)
-  );
 
-  const toggleFilter = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value, checked } = event.currentTarget;
-    if (checked) {
-      setActiveFilters((activeFilters) => [...activeFilters, value]);
-    } else {
-      setActiveFilters((activeFilters) =>
-        activeFilters.filter((f) => f !== value)
-      );
-    }
+  const [filters, setFilters] = useState<TFilters>({
+    byInput: ["id", "cuit", "commerce"],
+    byActivity: "all",
+  });
+
+  const setInputFilters = (checked: string[]) => {
+    setFilters((activeFilters) => ({
+      ...activeFilters,
+      byInput: checked,
+    }));
+  };
+
+  const setActivityFilters = (selected: ActivityFilter) => {
+    setFilters((activeFilters) => ({
+      ...activeFilters,
+      byActivity: selected,
+    }));
   };
 
   // Validation for Search input & filters selected
@@ -51,12 +50,9 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
         "Por favor ingrese 2 o más caracteres para iniciar la búsqueda." // Invalid error message
       );
       return false; // Returns false if too short
-    } else if (
-      !activeFilters.length ||
-      (activeFilters[0] === "active" && activeFilters.length === 1)
-    ) {
+    } else if (!filters.byInput.length) {
       setInvalid(
-        "Por favor seleccione alguno de las opciones de búsqueda." // Invalid error message
+        "Por favor seleccione alguna de las opciones de búsqueda." // Invalid error message
       );
       return false; // Returns false if there aren't filters selected
     } else {
@@ -68,7 +64,7 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
   // Wrapper function validates before handling search
   const wrapperSearch = () => {
     if (validateSearch(searchInput.current.value)) {
-      handleSearch(searchInput.current.value, activeFilters);
+      handleSearch(searchInput.current.value, filters);
     }
   };
 
@@ -116,7 +112,10 @@ const Searcher: FC<SearcherProps> = (props: SearcherProps) => {
         )}
       </FormControl>
 
-      <SearchFilters filters={listedFilters} toggleFilter={toggleFilter} />
+      <SearchFilters
+        handleCheckboxGroup={setInputFilters}
+        handleRadioGroup={setActivityFilters}
+      />
     </Stack>
   );
 };
