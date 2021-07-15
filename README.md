@@ -10,11 +10,11 @@ Se instalan las dependencias con `npm i` y se corre el modo desarrollo con `npm 
 
 - ### Impresi&oacute;n por consola
 
-  Al realizar la b&uacute;squeda en modo desarrollo, ya sea con el &iacute;cono de la lupa o presionando la tecla ENTER, se imprimira en consola la URL que se utilizar&iacute;a en producci&oacute;n.
+  Al realizar la b&uacute;squeda en modo desarrollo, ya sea con el &iacute;cono de la lupa o presionando la tecla ENTER, se imprimir&aacute; en consola la URL que se utilizar&iacute;a en producci&oacute;n. La URL de la API se encuentra almacenada en el archivo `.env`
 
 - ### Uso de Dummy
 
-  Para el display de la respuesta de la API utilice un .json creado con [Mockaroo](https://www.mockaroo.com/), el cual cuenta con 20 entradas con campos similares a los que se recibir&aacute;n de la API real.
+  Para el display de la respuesta de la API utilice un archivo json creado con [Mockaroo](https://www.mockaroo.com/), el cual cuenta con 20 entradas con campos similares a los que se recibir&aacute;n de la API real.
 
 - ### IDs repetidos
 
