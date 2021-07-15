@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Stack, useToast } from "@chakra-ui/react";
+import { Heading, Stack, useToast } from "@chakra-ui/react";
 import Header from "./components/Header";
 import Searcher from "./components/Searcher";
 import Table from "./components/Table";
@@ -10,9 +10,10 @@ const App: React.FC = () => {
   const [tableData, setTableData] = useState<TableData>();
   const toast = useToast();
 
+  // Sends the input values to the API through getData.
   const handleSearch = async (
     query: string,
-    filters: string[],
+    filters: TFilters,
     order?: any
   ) => {
     setLoading(true);
@@ -22,6 +23,7 @@ const App: React.FC = () => {
     try {
       response = await getData(query, filters, order);
     } catch (err) {
+      // Notifies the user if the load fails
       toast({
         title: "Ocurrió un error. Por favor, intente más tarde.",
         description: err.message,
@@ -34,9 +36,10 @@ const App: React.FC = () => {
     setLoading(false);
   };
 
+  // Triggers when the user clicks the sortable headers
   const handleSort = (
     event: React.MouseEvent<HTMLTableHeaderCellElement, MouseEvent>,
-    last_input: [string, string[]]
+    last_input: [string, TFilters]
   ) => {
     let order: 1 | -1;
     if (event.currentTarget.className == "sortable active") {
@@ -58,9 +61,9 @@ const App: React.FC = () => {
       {tableData ? (
         <Table loading={loading} {...tableData} handleSort={handleSort} />
       ) : (
-        <h2 className="placeholder">
+        <Heading as="h2" className="placeholder" size="lg">
           🔎 Los resultados aparecer&aacute;n aqu&iacute;.
-        </h2>
+        </Heading>
       )}
     </Stack>
   );

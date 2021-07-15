@@ -1,5 +1,12 @@
 declare global {
-  type DataRow = {
+  type ActivityFilter = "active" | "non-active" | "all";
+
+  interface TFilters {
+    byInput: string[];
+    byActivity: ActivityFilter;
+  }
+
+  interface DataRow {
     id: string;
     commerce: string;
     cuit: number;
@@ -8,33 +15,33 @@ declare global {
     // last sale format: DD/MM/YYYY
     last_sale: `${number}${number}\/${number}${number}\/${number}${number}${number}${number}`;
     concepts: number[];
-  };
+  }
 
-  type APIResponse = {
+  interface APIResponse {
     data: DataRow[];
     page: number;
     pages: number;
     rowsPerPage: number;
     total: number;
-  };
+  }
 
-  type Order =
+  type TOrder =
     | false
     | {
         param: "commerce" | "cuit";
         value: 1 | -1;
       };
 
-  type TableData = {
-    last_input: [string, string[]];
-    order: Order;
+  interface TableData extends APIResponse {
+    last_input: [string, TFilters];
+    order: TOrder;
     message_error?: string;
-  } & APIResponse;
+  }
 
   type FetchFromAPI = (
     query: string,
-    filters: string[],
-    order?: Order
+    filters: TFilters,
+    order?: TOrder
   ) => Promise<TableData>;
 }
 

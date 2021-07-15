@@ -1,16 +1,24 @@
 import dummy from "../dummy_API.json";
 
+// NOTE: In vite we use 'import.meta.env' as 'import\.meta'
+
 const getData: FetchFromAPI = async (input, filters, order = false) => {
-  // Transforms the selected filters (excluding 'active') to the query format
-  const possible_matches = filters
-    .filter((f) => f !== "active")
-    .map((f) => `{"${f}":"${input}"}`);
+  if (!import.meta.env.VITE_API_URL) {
+    throw new Error("API url missing on environment.");
+  }
+
+  // Transforms the selected filters to the query format
+  const possible_matches = filters.byInput.map((f) => `{"${f}":"${input}"}`);
 
   let query;
 
   // QUERY PARAMS
-  if (filters.includes("active")) {
-    query = `?={"$and": [{"$or": [${possible_matches}]}, {"active": 1}]}`;
+  if (filters.byActivity !== "all") {
+    if (filters.byActivity == "active") {
+      query = `?={"$and": [{"$or": [${possible_matches}]}, {"active": 1}]}`; // All active matches
+    } else {
+      query = `?={"$and": [{"$or": [${possible_matches}]}, {"active": 0}]}`; // All non-active matches
+    }
   } else {
     query = `?={"$or": [${possible_matches}]}`;
   }
@@ -21,14 +29,18 @@ const getData: FetchFromAPI = async (input, filters, order = false) => {
     query += `&h={"$orderby": {"${order.param}": ${order.value}}}`;
   }
 
-  if (process.env.NODE_ENV !== "production") {
+  if (!import.meta.env.PROD) {
     // DEVELOPMENT
-    const formatedData = dummy;
-    console.log(`Se inicia la busqueda en la URL: \n${query}`);
+
+    const formatedData = dummy as DataRow[];
+    console.log(
+      "Se inicia la busqueda en la URL:",
+      `\n${import.meta.env.VITE_API_URL + query}`
+    );
 
     await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulates the load
     return {
-      data: formatedData as DataRow[],
+      data: formatedData,
       pages: 100,
       rowsPerPage: 20,
       total: 2500,
@@ -38,11 +50,8 @@ const getData: FetchFromAPI = async (input, filters, order = false) => {
     };
   } else {
     // PRODUCTION
-    if (!process.env.API_URL) {
-      throw new Error("API url missing on environment.");
-    }
 
-    const response = await fetch(process.env.API_URL + query);
+    const response = await fetch(import.meta.env.VITE_API_URL + query);
     if (response.status !== 200) {
       throw new Error(
         `La conección a la API respondió con código ${response.status}.`

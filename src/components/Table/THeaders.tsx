@@ -2,22 +2,18 @@ import React, { MouseEventHandler } from "react";
 import slugify from "slugify";
 
 type THeadersProps = {
-  order: Order;
-  last_input: [string, string[]];
-  handleSort: (
-    event: React.MouseEvent<HTMLTableHeaderCellElement, MouseEvent>,
-    last_input: [string, string[]]
-  ) => void;
+  order: TOrder;
+  sortTable: MouseEventHandler<HTMLTableCellElement>;
 };
 
 type SortableHeaderProps = {
   name: string;
   id: string;
-  order: Order;
+  order: TOrder;
   handleClick: MouseEventHandler<HTMLTableHeaderCellElement>;
 };
 
-const THeaders = ({ order, last_input, handleSort }: THeadersProps) => {
+const THeaders = ({ order, sortTable }: THeadersProps) => {
   const headers = [
     "ID",
     "Comercio",
@@ -32,6 +28,7 @@ const THeaders = ({ order, last_input, handleSort }: THeadersProps) => {
     "Activo",
     "Ultima Venta",
   ];
+
   return (
     <thead>
       <tr>
@@ -42,7 +39,7 @@ const THeaders = ({ order, last_input, handleSort }: THeadersProps) => {
               name={header}
               id={header == "Comercio" ? "commerce" : "cuit"}
               order={order}
-              handleClick={(e) => handleSort(e, last_input)}
+              handleClick={sortTable}
             />
           ) : (
             <th key={slugify(header)}>{header}</th>

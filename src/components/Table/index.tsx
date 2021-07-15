@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { Spinner } from "@chakra-ui/react";
 
 import "../../styles/table.css";
@@ -10,16 +10,20 @@ interface TableProps extends TableData {
   loading: boolean;
   handleSort: (
     event: React.MouseEvent<HTMLTableHeaderCellElement, MouseEvent>,
-    last_input: [string, string[]]
+    last_input: [string, TFilters]
   ) => void;
 }
 
 const Table: React.FC<TableProps> = (props) => {
+  const sortTable: MouseEventHandler<HTMLTableHeaderCellElement> = (e) => {
+    props.handleSort(e, props.last_input);
+  };
+
   return (
     <div className="table-container">
       <div id="results">
         <table className="results-table">
-          <THeaders {...props} />
+          <THeaders order={props.order} sortTable={sortTable} />
 
           {props.loading || <TBody data={props.data} />}
         </table>

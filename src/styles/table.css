@@ -31,10 +31,6 @@ div#results::-webkit-scrollbar-thumb {
   border: 5px solid #fff; /* creates padding around scroll thumb */
 }
 
-h2.placeholder {
-  font-size: large;
-}
-
 /* HEADERS */
 #results thead {
   width: 100%;
